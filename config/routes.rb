@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :intervals
+  resources :experiences
+  resources :interval_games
   resources :users
   post '/sign_up', to: 'users#create'
   post '/login', to: 'auth#create'
