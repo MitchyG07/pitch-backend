@@ -7,7 +7,7 @@ class IntervalsController < ApplicationController
 
     def show
         interval = Interval.find(params[:id])
-        render json: interval
+        render json: interval, include: [:users]
     end
 
     def create
