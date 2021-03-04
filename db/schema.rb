@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_233921) do
+ActiveRecord::Schema.define(version: 2021_03_03_231412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chord_games", force: :cascade do |t|
+    t.integer "points"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "chord_leaderboards", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "chord_game_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chord_game_id"], name: "index_chord_leaderboards_on_chord_game_id"
+    t.index ["user_id"], name: "index_chord_leaderboards_on_user_id"
+  end
 
   create_table "experiences", force: :cascade do |t|
     t.bigint "user_id"
@@ -44,4 +59,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_233921) do
     t.integer "total_points"
   end
 
+  add_foreign_key "chord_leaderboards", "chord_games"
+  add_foreign_key "chord_leaderboards", "users"
 end

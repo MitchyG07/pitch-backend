@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :chord_leaderboards
+  resources :chord_games
   resources :intervals
   resources :experiences
   resources :interval_games
