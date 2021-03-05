@@ -13,6 +13,7 @@ class ChordGamesController < ApplicationController
 
     def create
         chord = ChordGame.create(chord_params)
+        render json: chord
     end
 
     private 
