@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
     def show 
         user = User.find(params[:id])
-        render json: user, include: [:intervals, :chord_games]
+        render json: user, include: [:intervals, :chord_games, :perfect_games]
     end
 
     def create
